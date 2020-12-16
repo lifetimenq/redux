@@ -1,11 +1,21 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import store from './Redux/store';
 import './App.css';
+import { Provider } from 'react-redux'
+
+import ChapterList from './Components/ChapterList/';
+
 
 function App() {
   return (
-    <div className="App">
-      Books App
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <div>
+          Book's contents
+        </div>
+        <ChapterList />
+      </div>
+    </Provider>
   );
 }
 
