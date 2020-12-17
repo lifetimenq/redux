@@ -2,11 +2,29 @@ import { connect } from 'react-redux';
 
 import ChapterList from './ChapterList';
 
-const mapStateToProps = (state) => (
-  {
-    bookContents: state.bookContents
+const filters = {
+  SHOW_ALL: () => true,
+  SHOW_COMPLETED: (item) => item.completed,
+  SHOW_UNCOMPLETED: (item) => !item.completed
+};
+
+
+const mapStateToProps = (state) => {
+  const test = {
+    bookContents: state.bookContents.map(
+      (chapter) => {
+          chapter.subChapter = chapter.subChapter.filter(
+            filters[state.filters]
+          )
+        return chapter;
+      }
+    ).filter(
+      filters[state.filters]
+    )
   }
-);
+
+  return test; 
+};
 
 const mapDispatchToProps = (dispatch) => ({
   toggleChapter: (idx) => dispatch({

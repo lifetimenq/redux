@@ -17,7 +17,8 @@ const initialState = [
   {
     id: 2,
     title: 'Глава вторая',
-    completed: false
+    completed: false,
+    subChapter: []
   },
   {
     id: 3,
