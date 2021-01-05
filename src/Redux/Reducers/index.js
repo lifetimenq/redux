@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 
-import { bookContents } from './chapter';
-import { filters } from './filters'
+import { subChapters } from './subChapter';
+import { filters } from './filters';
+import { content } from './chapter'; 
 
 export default combineReducers(
   {
-    bookContents,
+    content,
     filters
   }
 );

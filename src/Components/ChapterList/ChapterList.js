@@ -1,45 +1,19 @@
 import React from 'react';
+import SubChapterList from '../SubChapterList';
 
 
-const ChapterList = ( { bookContents, toggleChapter, toggleSubchapter, addChapter, addSubchapter } ) => (
-  <div>
+const ChapterList = ( { chapters, addChapter } ) => {
+
+  return (
+  <div className="todo-list">
     {
-      bookContents.map(
-        (chapter, idx) =>  (
-          <div id={chapter.id} key={chapter.id}>
-            <label>
-              <input 
-                type="checkbox" 
-                checked={chapter.completed} 
-                onChange={() => toggleChapter(idx)} />
-              {chapter.title}
-            </label>
-            {chapter.subChapter && chapter.subChapter.map(
-              (subChapter, idx) => (
-                <div>
-                  <label key={idx}>
-                    <input 
-                      type="checkbox" 
-                      checked={subChapter.completed}
-                      onChange={() => toggleSubchapter(idx, chapter.id)} />
-                    {subChapter.title}
-                  </label>
-                </div>
-              )
-            )}
-            <form
-              onSubmit={
-                (e) => {
-                  e.preventDefault();
-                  addSubchapter(e.target.parentElement.id, e.target.title.value);
-                  e.target.title.value = '';
-                }
-              }
-            >
-              <input type="text" name="title" />
-              <button>Добавить раздел</button>
-            </form>
-          </div>
+      chapters.map(
+        (chapter, idx) => (
+          <label key={idx}>
+            <input type="checkbox" checked={chapter.completed} onChange={()=>(true)} />
+            {chapter.title}
+            <SubChapterList chapterIdx={idx} />
+          </label>
         )
       )
     }
@@ -53,9 +27,9 @@ const ChapterList = ( { bookContents, toggleChapter, toggleSubchapter, addChapte
       }
     >
       <input type="text" name="title" />
-      <button>Добавить главу</button>
+      <button>Добавить Главу</button>
     </form>
   </div>
-);
+)};
 
 export default ChapterList;

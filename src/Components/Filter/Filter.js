@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Filter = ({ setFilter }) => {
+  
   return (
     <div>
       <button onClick={() => { setFilter('SHOW_ALL') } }>Show all</button>

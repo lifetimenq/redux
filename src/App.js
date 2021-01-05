@@ -3,8 +3,9 @@ import store from './Redux/store';
 import './App.css';
 import { Provider } from 'react-redux'
 
-import ChapterList from './Components/ChapterList/';
+import ChapterList from './Components/ChapterList';
 import Filter from './Components/Filter';
+import SubChapterList from './Components/SubChapterList';
 
 
 function App() {
