@@ -21,6 +21,10 @@ const ChapterList = ( { chapters, addChapter } ) => {
       onSubmit={
         (e) => {
           e.preventDefault();
+          if(!e.target.title.value.trim()) {
+            return
+          }
+
           addChapter(e.target.title.value);
           e.target.title.value = '';
         }

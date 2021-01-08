@@ -25,7 +25,9 @@ const ChapterList = ( { subChapters, chapterIdx, addSubchapter, toggleSubChapter
       onSubmit={
         (e) => {
           e.preventDefault();
-          
+          if(!e.target.title.value.trim()) {
+            return
+          }
           addSubchapter(chapterIdx, e.target.title.value);
           e.target.title.value = '';
         }
