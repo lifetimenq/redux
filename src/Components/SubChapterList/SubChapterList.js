@@ -1,7 +1,9 @@
 import React from 'react';
 
 
-const ChapterList = ( { subChapters, chapterIdx, addSubchapter, toggleSubChapter } ) => (
+const ChapterList = ( { content, chapterIdx, addSubchapter, toggleSubChapter } ) => {
+  const { subChapters } = content
+  return (
   <div className="todo-list">
     {
       subChapters && subChapters.map( 
@@ -37,6 +39,6 @@ const ChapterList = ( { subChapters, chapterIdx, addSubchapter, toggleSubChapter
       <button>Добавить подраздел</button>
     </form>
   </div>
-);
+)};
 
 export default ChapterList;

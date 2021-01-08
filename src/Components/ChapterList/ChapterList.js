@@ -2,8 +2,8 @@ import React from 'react';
 import SubChapterList from '../SubChapterList';
 
 
-const ChapterList = ( { chapters, addChapter } ) => {
-
+const ChapterList = ( { content, addChapter } ) => {
+  const { chapters } = content
   return (
   <div className="todo-list">
     {

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 
 import ChapterList from './Components/ChapterList';
 import Filter from './Components/Filter';
-import SubChapterList from './Components/SubChapterList';
 import Statistics from './Components/Statistics';
 
 

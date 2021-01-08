@@ -38,6 +38,34 @@ const initialState = {
   ]
 };
 
+function updateChapter(state, prevState, action) {
+
+  let chapterComplete = state.subChapters
+  .filter((element) => (element.chapterId === action.chapterId))
+  .every((subChapter) => (subChapter.completed));
+
+  if (chapterComplete) {
+    return {...state, chapters: prevState.chapters.map(
+        (chapter, idx) => (
+          idx === action.chapterId
+            ? { ...chapter, completed: true }
+            : chapter
+        )
+      )
+    };
+  } else {
+    return {...state, chapters: prevState.chapters.map(
+        (chapter, idx) => (
+          idx === action.chapterId
+            ? { ...chapter, completed: false }
+            : chapter
+        )
+      )
+    };
+  }
+
+}
+
 export const content = function(state = initialState, action) {
   switch(action.type) {
     case 'ADD_CHAPTER':
@@ -49,7 +77,7 @@ export const content = function(state = initialState, action) {
         )
       };
     case 'ADD_SUBCHAPTER':
-      return {...state, subChapters: state.subChapters.concat(
+      const new_state = {...state, subChapters: state.subChapters.concat(
           {
             chapterId: action.chapterId,
             title: action.title,
@@ -57,8 +85,11 @@ export const content = function(state = initialState, action) {
           }
         )
       };
+
+      return updateChapter(new_state, state, action);
+
     case 'TOGGLE_SUBCHAPTER':
-      let temp_state = {...state, subChapters: state.subChapters.map(
+      const toggle_state = {...state, subChapters: state.subChapters.map(
           (subChapter, idx) => (
             idx === action.idx
               ? { ...subChapter, completed: !subChapter.completed }
@@ -67,31 +98,7 @@ export const content = function(state = initialState, action) {
         )
       };
 
-      let chapterComplete = temp_state.subChapters
-      .filter((element) => (element.chapterId === action.chapterId))
-      .every((subChapter) => (subChapter.completed));
-
-      if (chapterComplete) {
-        temp_state = {...temp_state, chapters: state.chapters.map(
-            (chapter, idx) => (
-              idx === action.chapterId
-                ? { ...chapter, completed: true }
-                : chapter
-            )
-          )
-        };
-      } else {
-        temp_state = {...temp_state, chapters: state.chapters.map(
-            (chapter, idx) => (
-              idx === action.chapterId
-                ? { ...chapter, completed: false }
-                : chapter
-            )
-          )
-        };
-      }
-
-      return temp_state;
+      return updateChapter(toggle_state, state, action);
     default:
       return state;
   }

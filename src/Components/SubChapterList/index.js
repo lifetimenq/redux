@@ -4,13 +4,18 @@ import SubChapterList from './SubChapterList';
 
 const filters = {
   SHOW_ALL: () => true,
-  SHOW_COMPLETED: (item) => item.completed,
-  SHOW_UNCOMPLETED: (item) => !item.completed
+  SHOW_COMPLETED: (chapter) => chapter.completed,
+  SHOW_UNCOMPLETED: (chapter) => !chapter.completed
 };
 
-
 const mapStateToProps = (state) => {
-  return state.content; 
+  return {
+    ...state,
+    content: {
+      chapters: state.content.chapters.filter(filters[state.filters]),
+      subChapters: state.content.subChapters.filter(filters[state.filters])
+    }
+  }; 
 };
 
 const mapDispatchToProps = (dispatch) => ({

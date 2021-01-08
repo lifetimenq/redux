@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 
-import { subChapters } from './subChapter';
 import { filters } from './filters';
 import { content } from './chapter'; 
 
