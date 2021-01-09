@@ -8,11 +8,11 @@ const ChapterList = ( { content, addChapter } ) => {
   <div className="todo-list">
     {
       chapters.map(
-        (chapter, idx) => (
-          <label key={idx}>
+        (chapter) => (
+          <label key={chapter.id}>
             <input type="checkbox" checked={chapter.completed} onChange={()=>(true)} />
             {chapter.title}
-            <SubChapterList chapterIdx={idx} />
+            <SubChapterList chapterId={chapter.id} />
           </label>
         )
       )

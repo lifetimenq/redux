@@ -24,9 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
     title,
     chapterId
   }),
-  toggleSubChapter: (idx, chapterId) => dispatch({
+  toggleSubChapter: (id, chapterId) => dispatch({
     type: 'TOGGLE_SUBCHAPTER',
-    idx,
+    id,
     chapterId
   })
 });
