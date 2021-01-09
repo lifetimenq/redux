@@ -5,13 +5,13 @@ import SubChapterList from '../SubChapterList';
 const ChapterList = ( { content, addChapter } ) => {
   const { chapters } = content
   return (
-  <div className="todo-list">
+  <div className="chapter-list">
     {
       chapters.map(
         (chapter) => (
           <label key={chapter.id}>
             <input type="checkbox" checked={chapter.completed} onChange={()=>(true)} />
-            {chapter.title}
+            <span className="chapter-title">{chapter.title}</span>
             <SubChapterList chapterId={chapter.id} />
           </label>
         )
@@ -30,8 +30,10 @@ const ChapterList = ( { content, addChapter } ) => {
         }
       }
     >
-      <input type="text" name="title" />
-      <button>Добавить Главу</button>
+      <div className="chapter-add">
+        <input type="text" name="title" />
+        <button>Добавить Главу</button>
+      </div>
     </form>
   </div>
 )};

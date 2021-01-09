@@ -10,4 +10,8 @@ const mapDispatchToProps = (dispatch) => (
     })
 });
 
-export default connect(null, mapDispatchToProps)(Filter);
+const mapStateToProps = (state) => {
+  return { filters: state.filters }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

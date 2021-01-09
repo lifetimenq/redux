@@ -4,7 +4,7 @@ import React from 'react';
 const ChapterList = ( { content, chapterId, addSubchapter, toggleSubChapter } ) => {
   const { subChapters } = content
   return (
-  <div className="todo-list">
+  <div className="sub-chapter-list">
     {
       subChapters && subChapters.map( 
         (subChapter) => {
@@ -35,8 +35,10 @@ const ChapterList = ( { content, chapterId, addSubchapter, toggleSubChapter } ) 
         }
       }
     >
-      <input type="text" name="title" />
-      <button>Добавить подраздел</button>
+      <div className="sub-chapter-add">
+        <input type="text" name="title" />
+        <button>Добавить подраздел</button>
+      </div>
     </form>
   </div>
 )};

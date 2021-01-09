@@ -6,14 +6,14 @@ const Statistics = ({chapters, subChapters}) => {
   const percent = Math.floor((completeChapters / allChapters) * 100)
 
   return (
-    <>
-      <div>
+    <div className="statistics">
+      <div >
         количество разделов: {allChapters} 
       </div>
       <div>
         процент готовности: {percent}
       </div>
-    </>
+      </div>
   )
 }
 

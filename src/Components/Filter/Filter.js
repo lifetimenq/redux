@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Filter = ({ setFilter }) => {
+const Filter = ( { setFilter, filters }) => {
   
   return (
-    <div>
-      <button onClick={() => { setFilter('SHOW_ALL') } }>Show all</button>
-      <button onClick={() => { setFilter('SHOW_COMPLETED') } }>Show completed</button>
-      <button onClick={() => { setFilter('SHOW_UNCOMPLETED') } }>Show uncompleted</button>
+    <div className="filters">
+      <button className={`filter-button ${filters === 'SHOW_ALL' ? 'filter-button-selected' : ''}`} onClick={() => { setFilter('SHOW_ALL') } }>Показать все</button>
+      <button className={`filter-button ${filters === 'SHOW_COMPLETED' ? 'filter-button-selected' : ''}`} onClick={() => { setFilter('SHOW_COMPLETED') } }>Показать готовые</button>
+      <button className={`filter-button ${filters === 'SHOW_UNCOMPLETED' ? 'filter-button-selected' : ''}`} onClick={() => { setFilter('SHOW_UNCOMPLETED') } }>Показать не готовые</button>
     </div>
   )
 }

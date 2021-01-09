@@ -12,12 +12,14 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <div>
-          Book's contents
+        <div className="content">
+          <div className='book-content'>
+            Содержание книги
+          </div>
+          <Filter />
+          <ChapterList />
+          <Statistics />
         </div>
-        <Filter />
-        <ChapterList />
-        <Statistics />
       </div>
     </Provider>
   );
