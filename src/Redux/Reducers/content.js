@@ -51,24 +51,13 @@ function updateChapter(state, prevState, action) {
   .filter((element) => (element.chapterId === action.chapterId))
   .every((subChapter) => (subChapter.completed));
 
-  if (chapterComplete) {
-    return {...state, chapters: prevState.chapters.map(
-        (chapter) => (
-          chapter.id === action.chapterId
-            ? { ...chapter, completed: true }
-            : chapter
-        )
+  return {...state, chapters: prevState.chapters.map(
+      (chapter) => (
+        chapter.id === action.chapterId
+          ? { ...chapter, completed: chapterComplete }
+          : chapter
       )
-    };
-  } else {
-    return {...state, chapters: prevState.chapters.map(
-        (chapter) => (
-          chapter.id === action.chapterId
-            ? { ...chapter, completed: false }
-            : chapter
-        )
-      )
-    };
+    )
   }
 
 }
